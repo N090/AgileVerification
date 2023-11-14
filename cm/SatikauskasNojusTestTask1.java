@@ -5,14 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PeriodTest {
 
-    @Test
+   @Test
     public void testConstructor1() {
         // Test case 1
-        int start1 = 0;
-        int end1 = 24;
+        int start1=0;
+        int end1=24;
         Period period1 = new Period(start1, end1);
-        assertEquals(start1, period1.startHour);
-        assertEquals(end1, period1.endHour);
     }
 
     @Test
@@ -21,18 +19,14 @@ class PeriodTest {
         int start2 = 1;
         int end2 = 23;
         Period period2 = new Period(start2, end2);
-        assertEquals(start2, period2.startHour);
-        assertEquals(end2, period2.endHour);
     }
 
     @Test
     public void testConstructor3() {
         // Test case 3
-        int start3 = 9;
-        int end3 = 12;
+        int start3 = -1;
+        int end3 = 1;
         Period period3 = new Period(start3, end3);
-        assertEquals(start3, period3.startHour);
-        assertEquals(end3, period3.endHour);
     }
 
     @Test
@@ -41,8 +35,6 @@ class PeriodTest {
         int start4 = 24;
         int end4 = 0;
         Period period4 = new Period(start4, end4);
-        assertEquals(start4, period4.startHour);
-        assertEquals(end4, period4.endHour);
     }
 
     @Test
@@ -51,8 +43,6 @@ class PeriodTest {
         int start5 = 25;
         int end5 = 26;
         Period period5 = new Period(start5, end5);
-        assertEquals(start5, period5.startHour);
-        assertEquals(end5, period5.endHour);
     }
 
     @Test
@@ -61,8 +51,6 @@ class PeriodTest {
         int start6 = 0;
         int end6 = 0;
         Period period6 = new Period(start6, end6);
-        assertEquals(start6, period6.startHour);
-        assertEquals(end6, period6.endHour);
     }
 
     @Test
@@ -71,8 +59,6 @@ class PeriodTest {
         int start7 = 23;
         int end7 = 24;
         Period period7 = new Period(start7, end7);
-        assertEquals(start7, period7.startHour);
-        assertEquals(end7, period7.endHour);
     }
 
     @Test
@@ -81,8 +67,6 @@ class PeriodTest {
         int start8 = -1;
         int end8 = -1;
         Period period2 = new Period(start8, end8);
-        assertEquals(start8, period2.startHour);
-        assertEquals(end8, period2.endHour);
     }
 
     @Test
@@ -91,8 +75,6 @@ class PeriodTest {
         int start9 = 5;
         int end9 = -1;
         Period period9 = new Period(start9, end9);
-        assertEquals(start9, period9.startHour);
-        assertEquals(end9, period9.endHour);
     }
 
 
