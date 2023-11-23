@@ -1,12 +1,10 @@
 package cm;
 
-
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -80,6 +78,24 @@ public class SatikauskasNojusTestTask2 {
         // Assert
         assertEquals(BigDecimal.valueOf(40), result);
     }
+
+    @Test
+    public void testRateConstructorReducedRateNull() {
+        try {
+            assertThrows(IllegalArgumentException.class, () -> {
+                Rate rate = new Rate(
+                        CarParkKind.STAFF, BigDecimal.valueOf(5.0), null,
+                        new ArrayList<>(),
+                        new ArrayList<>() {{
+                            add(new Period(10, 14));
+                        }}
+                );
+            });
+        } catch (Exception e) {
+            fail("Exception " + e);
+        }
+    }
+
 
     // Additional test cases for calculate to cover branches
 
