@@ -24,7 +24,6 @@ public class SatikauskasNojusTestTask2 {
         // Act & Assert
         assertDoesNotThrow(() -> new Rate(kind, normalRate, reducedRate, normalPeriods, reducedPeriods));
     }
-
     // Additional test cases for the constructor to cover branches
 
     @Test
@@ -39,7 +38,6 @@ public class SatikauskasNojusTestTask2 {
         // Act
         new Rate(kind, normalRate, reducedRate, normalPeriods, reducedPeriods);
     }
-
     // Additional test cases for the constructor to cover branches
 
     @Test
@@ -54,7 +52,6 @@ public class SatikauskasNojusTestTask2 {
         // Assert
         assertTrue(result);
     }
-
     // Additional test cases for isValidPeriods to cover branches
 
     @Test
@@ -69,7 +66,6 @@ public class SatikauskasNojusTestTask2 {
         // Assert
         assertEquals(BigDecimal.ZERO, result);
     }
-
     // Additional test cases for calculate to cover branches
 
     @Test
@@ -87,6 +83,148 @@ public class SatikauskasNojusTestTask2 {
 
     // Additional test cases for calculate to cover branches
 
+    @Test
+    void testIsIn() {
+        Period period = new Period(8, 12);
+
+        // Test within the period
+        assertTrue(period.isIn(9));
+
+        // Test at the start of the period
+        assertTrue(period.isIn(8));
+
+        // Test at the end of the period
+        assertFalse(period.isIn(12));
+
+        // Test outside the period
+        assertFalse(period.isIn(6));
+        assertFalse(period.isIn(13));
+    }
+
+    @Test
+    void testDuration() {
+        Period period = new Period(8, 12);
+
+        // Duration of the period should be 4 hours
+        assertEquals(4, period.duration());
+    }
+
+    @Test
+    void testOccurences() {
+        Period period = new Period(8, 12);
+
+        // Create a list of periods
+        List<Period> periodList = new ArrayList<>();
+        periodList.add(new Period(9, 11));
+        periodList.add(new Period(14, 16));
+
+        // The period overlaps with the first period in the list, so occurrences should be 2
+        assertEquals(2, period.occurences(periodList));
+
+        // Test with an empty list, occurrences should be 0
+        assertEquals(0, period.occurences(new ArrayList<>()));
+    }
+
+    @Test
+    void testValidRateCreation() {
+        // Test valid rate creation
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(8, 12));
+        reducedPeriods.add(new Period(18, 22));
+
+        Rate rate = new Rate(CarParkKind.STUDENT, BigDecimal.valueOf(10), BigDecimal.valueOf(5), normalPeriods, reducedPeriods);
+
+        assertEquals(CarParkKind.STUDENT, rate.kind);
+        assertEquals(BigDecimal.valueOf(10), rate.hourlyNormalRate);
+        assertEquals(BigDecimal.valueOf(5), rate.hourlyReducedRate);
+        assertEquals(normalPeriods, rate.normal);
+        assertEquals(reducedPeriods, rate.reduced);
+    }
+
+    @Test
+    void testInvalidRateCreation() {
+        // Test invalid rate creation
+
+        // Null periods
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(CarParkKind.STAFF, BigDecimal.valueOf(15), BigDecimal.valueOf(7), null, null);
+        });
+
+        // Null rates
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(CarParkKind.MANAGEMENT, null, BigDecimal.valueOf(8), new ArrayList<>(), new ArrayList<>());
+        });
+
+        // Negative rates
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(CarParkKind.STAFF, BigDecimal.valueOf(-5), BigDecimal.valueOf(3), new ArrayList<>(), new ArrayList<>());
+        });
+
+        // Normal rate less than or equal to reduced rate
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(8, 12));
+        reducedPeriods.add(new Period(18, 22));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(CarParkKind.VISITOR, BigDecimal.valueOf(8), BigDecimal.valueOf(8), normalPeriods, reducedPeriods);
+        });
+
+        // Overlapping periods
+        normalPeriods.add(new Period(10, 14));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(CarParkKind.MANAGEMENT, BigDecimal.valueOf(12), BigDecimal.valueOf(6), normalPeriods, reducedPeriods);
+        });
+    }
+
+    @Test
+    void testCalculate() {
+        // Test calculate method
+
+        Rate rate = new Rate(CarParkKind.STUDENT, BigDecimal.valueOf(10), BigDecimal.valueOf(5),
+                createPeriodList(8, 12), createPeriodList(18, 22));
+
+        // Test with a period that falls entirely within normal hours
+        Period periodWithinNormal = new Period(9, 11);
+        assertEquals(BigDecimal.valueOf(20), rate.calculate(periodWithinNormal));
+
+        // Test with a period that falls entirely within reduced hours
+        Period periodWithinReduced = new Period(19, 21);
+        assertEquals(BigDecimal.valueOf(15), rate.calculate(periodWithinReduced));
+
+        // Test with a period that spans both normal and reduced hours
+        Period periodSpanningBoth = new Period(10, 20);
+        assertEquals(BigDecimal.valueOf(120), rate.calculate(periodSpanningBoth));
+
+        // Test with a visitor rate (should always return 0)
+        Rate visitorRate = new Rate(CarParkKind.VISITOR, BigDecimal.valueOf(8), BigDecimal.valueOf(4),
+                createPeriodList(8, 18), createPeriodList(18, 22));
+
+        assertEquals(BigDecimal.valueOf(0), visitorRate.calculate(periodSpanningBoth));
+    }
+
+    // Helper method to create a list of periods
+    private ArrayList<Period> createPeriodList(int start, int end) {
+        ArrayList<Period> periods = new ArrayList<>();
+        periods.add(new Period(start, end));
+        return periods;
+    }
+
+
+    @Test
+    void testOverlaps() {
+        Period period1 = new Period(8, 12);
+        Period period2 = new Period(10, 14);
+        Period period3 = new Period(14, 18);
+
+        // Test overlapping periods
+        assertTrue(period1.overlaps(period2));
+
+        // Test non-overlapping periods
+        assertFalse(period1.overlaps(period3));
+    }
 
 
     @Test
