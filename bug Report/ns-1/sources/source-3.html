@@ -1,0 +1,368 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PeriodTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">cm</a>
+</div>
+
+<h1>Coverage Summary for Class: PeriodTest (cm)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PeriodTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (33/33)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    78.4%
+  </span>
+  <span class="absValue">
+    (69/88)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;//Nojus Satikauskas
+<i class="no-highlight">2</i>&nbsp;package cm;
+<i class="no-highlight">3</i>&nbsp;import org.junit.jupiter.api.Test;
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;import java.math.BigDecimal;
+<i class="no-highlight">6</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">7</i>&nbsp;import java.util.Arrays;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;import static org.junit.jupiter.api.Assertions.*;
+<i class="no-highlight">10</i>&nbsp;
+<b class="fc"><i class="no-highlight">11</i>&nbsp;class PeriodTest {</b>
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;    @Test
+<i class="no-highlight">14</i>&nbsp;    public void testConstructor1() {
+<i class="no-highlight">15</i>&nbsp;        // Test case 1
+<b class="fc"><i class="no-highlight">16</i>&nbsp;        int start1=0;</b>
+<b class="fc"><i class="no-highlight">17</i>&nbsp;        int end1=24;</b>
+<b class="fc"><i class="no-highlight">18</i>&nbsp;        Period period1 = new Period(start1, end1);</b>
+<i class="no-highlight">19</i>&nbsp;    }
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @Test
+<i class="no-highlight">22</i>&nbsp;    public void testConstructor2() {
+<i class="no-highlight">23</i>&nbsp;        // Test case 2
+<b class="fc"><i class="no-highlight">24</i>&nbsp;        int start2 = 1;</b>
+<b class="fc"><i class="no-highlight">25</i>&nbsp;        int end2 = 23;</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;        Period period2 = new Period(start2, end2);</b>
+<i class="no-highlight">27</i>&nbsp;    }
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;    @Test
+<i class="no-highlight">30</i>&nbsp;    public void testConstructor3() {
+<i class="no-highlight">31</i>&nbsp;        // Test case 3
+<b class="fc"><i class="no-highlight">32</i>&nbsp;        int start3 = -1;</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;        int end3 = 1;</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;        Period period3 = new Period(start3, end3);</b>
+<i class="no-highlight">35</i>&nbsp;    }
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    @Test
+<i class="no-highlight">38</i>&nbsp;    public void testConstructor4() {
+<i class="no-highlight">39</i>&nbsp;        // Test case 4
+<b class="fc"><i class="no-highlight">40</i>&nbsp;        int start4 = 24;</b>
+<b class="fc"><i class="no-highlight">41</i>&nbsp;        int end4 = 0;</b>
+<b class="fc"><i class="no-highlight">42</i>&nbsp;        Period period4 = new Period(start4, end4);</b>
+<i class="no-highlight">43</i>&nbsp;    }
+<i class="no-highlight">44</i>&nbsp;
+<i class="no-highlight">45</i>&nbsp;    @Test
+<i class="no-highlight">46</i>&nbsp;    public void testConstructor5() {
+<i class="no-highlight">47</i>&nbsp;        // Test case 5
+<b class="fc"><i class="no-highlight">48</i>&nbsp;        int start5 = 25;</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        int end5 = 26;</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        Period period5 = new Period(start5, end5);</b>
+<i class="no-highlight">51</i>&nbsp;    }
+<i class="no-highlight">52</i>&nbsp;
+<i class="no-highlight">53</i>&nbsp;    @Test
+<i class="no-highlight">54</i>&nbsp;    public void testConstructor6() {
+<i class="no-highlight">55</i>&nbsp;        // Test case 6
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        int start6 = 0;</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;        int end6 = 0;</b>
+<b class="fc"><i class="no-highlight">58</i>&nbsp;        Period period6 = new Period(start6, end6);</b>
+<i class="no-highlight">59</i>&nbsp;    }
+<i class="no-highlight">60</i>&nbsp;
+<i class="no-highlight">61</i>&nbsp;    @Test
+<i class="no-highlight">62</i>&nbsp;    public void testConstructor7() {
+<i class="no-highlight">63</i>&nbsp;        // Test case 7
+<b class="fc"><i class="no-highlight">64</i>&nbsp;        int start7 = 23;</b>
+<b class="fc"><i class="no-highlight">65</i>&nbsp;        int end7 = 24;</b>
+<b class="fc"><i class="no-highlight">66</i>&nbsp;        Period period7 = new Period(start7, end7);</b>
+<i class="no-highlight">67</i>&nbsp;    }
+<i class="no-highlight">68</i>&nbsp;
+<i class="no-highlight">69</i>&nbsp;    @Test
+<i class="no-highlight">70</i>&nbsp;    public void testConstructor8() {
+<i class="no-highlight">71</i>&nbsp;        // Test case 8
+<b class="fc"><i class="no-highlight">72</i>&nbsp;        int start8 = -1;</b>
+<b class="fc"><i class="no-highlight">73</i>&nbsp;        int end8 = -1;</b>
+<b class="fc"><i class="no-highlight">74</i>&nbsp;        Period period2 = new Period(start8, end8);</b>
+<i class="no-highlight">75</i>&nbsp;    }
+<i class="no-highlight">76</i>&nbsp;
+<i class="no-highlight">77</i>&nbsp;    @Test
+<i class="no-highlight">78</i>&nbsp;    public void testConstructor9() {
+<i class="no-highlight">79</i>&nbsp;        // Test case 9
+<b class="fc"><i class="no-highlight">80</i>&nbsp;        int start9 = 5;</b>
+<b class="fc"><i class="no-highlight">81</i>&nbsp;        int end9 = -1;</b>
+<b class="fc"><i class="no-highlight">82</i>&nbsp;        Period period9 = new Period(start9, end9);</b>
+<i class="no-highlight">83</i>&nbsp;    }
+<i class="no-highlight">84</i>&nbsp;
+<i class="no-highlight">85</i>&nbsp;
+<i class="no-highlight">86</i>&nbsp;
+<i class="no-highlight">87</i>&nbsp;    @Test
+<i class="no-highlight">88</i>&nbsp;    void testOverlaps1() {
+<i class="no-highlight">89</i>&nbsp;        // Test case 10
+<b class="fc"><i class="no-highlight">90</i>&nbsp;        Period period10 = new Period(12, 14);</b>
+<b class="fc"><i class="no-highlight">91</i>&nbsp;        Period period11 = new Period(11, 15);</b>
+<b class="fc"><i class="no-highlight">92</i>&nbsp;        assertTrue(period10.overlaps(period11));</b>
+<i class="no-highlight">93</i>&nbsp;    }
+<i class="no-highlight">94</i>&nbsp;
+<i class="no-highlight">95</i>&nbsp;    @Test
+<i class="no-highlight">96</i>&nbsp;    void testOverlaps2() {
+<i class="no-highlight">97</i>&nbsp;        // Test case 11
+<b class="fc"><i class="no-highlight">98</i>&nbsp;        Period period12 = new Period(21, 23);</b>
+<b class="fc"><i class="no-highlight">99</i>&nbsp;        Period period13 = new Period(22, 24);</b>
+<b class="fc"><i class="no-highlight">100</i>&nbsp;        assertTrue(period12.overlaps(period13));</b>
+<i class="no-highlight">101</i>&nbsp;    }
+<i class="no-highlight">102</i>&nbsp;
+<i class="no-highlight">103</i>&nbsp;    @Test
+<i class="no-highlight">104</i>&nbsp;    void testOverlaps3() {
+<i class="no-highlight">105</i>&nbsp;        // Test case 12
+<b class="fc"><i class="no-highlight">106</i>&nbsp;        Period period14 = new Period(22, 23);</b>
+<b class="fc"><i class="no-highlight">107</i>&nbsp;        Period period15 = new Period(22, 24);</b>
+<b class="fc"><i class="no-highlight">108</i>&nbsp;        assertTrue(period14.overlaps(period15));</b>
+<i class="no-highlight">109</i>&nbsp;    }
+<i class="no-highlight">110</i>&nbsp;
+<i class="no-highlight">111</i>&nbsp;    @Test
+<i class="no-highlight">112</i>&nbsp;    void testOverlaps4() {
+<i class="no-highlight">113</i>&nbsp;        // Test case 13
+<b class="fc"><i class="no-highlight">114</i>&nbsp;        Period period16 = new Period(10, 12);</b>
+<b class="fc"><i class="no-highlight">115</i>&nbsp;        Period period17 = new Period(10, 12);</b>
+<b class="fc"><i class="no-highlight">116</i>&nbsp;        assertTrue(period16.overlaps(period17));</b>
+<i class="no-highlight">117</i>&nbsp;    }
+<i class="no-highlight">118</i>&nbsp;
+<i class="no-highlight">119</i>&nbsp;    @Test
+<i class="no-highlight">120</i>&nbsp;    void testOverlaps5() {
+<i class="no-highlight">121</i>&nbsp;        // Test case 14
+<b class="fc"><i class="no-highlight">122</i>&nbsp;        Period period18 = new Period(1, 4);</b>
+<b class="fc"><i class="no-highlight">123</i>&nbsp;        Period period19 = new Period(4, 6);</b>
+<b class="fc"><i class="no-highlight">124</i>&nbsp;        assertFalse(period18.overlaps(period19));</b>
+<i class="no-highlight">125</i>&nbsp;    }
+<i class="no-highlight">126</i>&nbsp;
+<i class="no-highlight">127</i>&nbsp;    @Test
+<i class="no-highlight">128</i>&nbsp;    void testOverlaps6() {
+<i class="no-highlight">129</i>&nbsp;        // Test case 15
+<b class="fc"><i class="no-highlight">130</i>&nbsp;        Period period20 = new Period(4, 6);</b>
+<b class="fc"><i class="no-highlight">131</i>&nbsp;        Period period21 = new Period(1, 4);</b>
+<b class="fc"><i class="no-highlight">132</i>&nbsp;        assertFalse(period20.overlaps(period21));</b>
+<i class="no-highlight">133</i>&nbsp;    }
+<i class="no-highlight">134</i>&nbsp;
+<i class="no-highlight">135</i>&nbsp;    @Test
+<i class="no-highlight">136</i>&nbsp;    void testOverlaps7() {
+<i class="no-highlight">137</i>&nbsp;        // Test case 16
+<b class="fc"><i class="no-highlight">138</i>&nbsp;        Period period22 = new Period(6, 8);</b>
+<b class="fc"><i class="no-highlight">139</i>&nbsp;        Period period23 = new Period(13, 15);</b>
+<b class="fc"><i class="no-highlight">140</i>&nbsp;        assertFalse(period22.overlaps(period23));</b>
+<i class="no-highlight">141</i>&nbsp;    }
+<i class="no-highlight">142</i>&nbsp;
+<i class="no-highlight">143</i>&nbsp;    @Test
+<i class="no-highlight">144</i>&nbsp;    void testOverlaps8() {
+<i class="no-highlight">145</i>&nbsp;        // Test case 17
+<b class="fc"><i class="no-highlight">146</i>&nbsp;        Period period24 = new Period(25, 27);</b>
+<b class="nc"><i class="no-highlight">147</i>&nbsp;        Period period25 = new Period(23, 25);</b>
+<b class="nc"><i class="no-highlight">148</i>&nbsp;        assertFalse(period24.overlaps(period25));</b>
+<i class="no-highlight">149</i>&nbsp;    }
+<i class="no-highlight">150</i>&nbsp;
+<i class="no-highlight">151</i>&nbsp;    @Test
+<i class="no-highlight">152</i>&nbsp;    void testOverlaps9() {
+<i class="no-highlight">153</i>&nbsp;        // Test case 18
+<b class="fc"><i class="no-highlight">154</i>&nbsp;        Period period26 = new Period(-5, 0);</b>
+<b class="nc"><i class="no-highlight">155</i>&nbsp;        Period period27 = new Period(0, 5);</b>
+<b class="nc"><i class="no-highlight">156</i>&nbsp;        assertFalse(period26.overlaps(period27));</b>
+<i class="no-highlight">157</i>&nbsp;    }
+<i class="no-highlight">158</i>&nbsp;
+<i class="no-highlight">159</i>&nbsp;    @Test
+<i class="no-highlight">160</i>&nbsp;    void testOverlaps10() {
+<i class="no-highlight">161</i>&nbsp;        // Test case 19
+<b class="fc"><i class="no-highlight">162</i>&nbsp;        Period period28 = new Period(0, 5);</b>
+<b class="fc"><i class="no-highlight">163</i>&nbsp;        Period period29 = new Period(-4, -1);</b>
+<b class="nc"><i class="no-highlight">164</i>&nbsp;        assertFalse(period28.overlaps(period29));</b>
+<i class="no-highlight">165</i>&nbsp;    }
+<i class="no-highlight">166</i>&nbsp;
+<i class="no-highlight">167</i>&nbsp;    @Test
+<i class="no-highlight">168</i>&nbsp;    void testOverlaps11() {
+<i class="no-highlight">169</i>&nbsp;        // Test case 20
+<b class="fc"><i class="no-highlight">170</i>&nbsp;        Period period30 = new Period(-5, 10);</b>
+<b class="nc"><i class="no-highlight">171</i>&nbsp;        Period period31 = new Period(-5, 0);</b>
+<b class="nc"><i class="no-highlight">172</i>&nbsp;        assertTrue(period30.overlaps(period31));</b>
+<i class="no-highlight">173</i>&nbsp;    }
+<i class="no-highlight">174</i>&nbsp;
+<i class="no-highlight">175</i>&nbsp;    @Test
+<i class="no-highlight">176</i>&nbsp;    void testOverlaps12() {
+<i class="no-highlight">177</i>&nbsp;        // Test case 21
+<b class="fc"><i class="no-highlight">178</i>&nbsp;        Period period32 = new Period(-5, -1);</b>
+<b class="nc"><i class="no-highlight">179</i>&nbsp;        Period period33 = new Period(-3, 1);</b>
+<b class="nc"><i class="no-highlight">180</i>&nbsp;        assertTrue(period32.overlaps(period33));</b>
+<i class="no-highlight">181</i>&nbsp;    }
+<i class="no-highlight">182</i>&nbsp;
+<i class="no-highlight">183</i>&nbsp;    @Test
+<i class="no-highlight">184</i>&nbsp;    void testOverlaps13() {
+<i class="no-highlight">185</i>&nbsp;        // Test case 22
+<b class="fc"><i class="no-highlight">186</i>&nbsp;        Period period34 = new Period(23, 25);</b>
+<b class="nc"><i class="no-highlight">187</i>&nbsp;        Period period35 = new Period(24, 26);</b>
+<b class="nc"><i class="no-highlight">188</i>&nbsp;        assertTrue(period34.overlaps(period35));</b>
+<i class="no-highlight">189</i>&nbsp;    }
+<i class="no-highlight">190</i>&nbsp;
+<i class="no-highlight">191</i>&nbsp;    @Test
+<i class="no-highlight">192</i>&nbsp;    void testOverlaps14() {
+<i class="no-highlight">193</i>&nbsp;        // Test case 23
+<b class="fc"><i class="no-highlight">194</i>&nbsp;        Period period36 = new Period(26, 28);</b>
+<b class="nc"><i class="no-highlight">195</i>&nbsp;        Period period37 = new Period(25, 27);</b>
+<b class="nc"><i class="no-highlight">196</i>&nbsp;        assertTrue(period36.overlaps(period37));</b>
+<i class="no-highlight">197</i>&nbsp;    }
+<i class="no-highlight">198</i>&nbsp;
+<i class="no-highlight">199</i>&nbsp;    @Test
+<i class="no-highlight">200</i>&nbsp;    void testDuration1() {
+<i class="no-highlight">201</i>&nbsp;        // Test case 24
+<b class="fc"><i class="no-highlight">202</i>&nbsp;        Period period38 = new Period(0, 24);</b>
+<b class="fc"><i class="no-highlight">203</i>&nbsp;        assertEquals(24, period38.duration());</b>
+<i class="no-highlight">204</i>&nbsp;    }
+<i class="no-highlight">205</i>&nbsp;
+<i class="no-highlight">206</i>&nbsp;    @Test
+<i class="no-highlight">207</i>&nbsp;    void testDuration2() {
+<i class="no-highlight">208</i>&nbsp;        // Test case 25
+<b class="fc"><i class="no-highlight">209</i>&nbsp;        Period period39 = new Period(1, 23);</b>
+<b class="fc"><i class="no-highlight">210</i>&nbsp;        assertEquals(22, period39.duration());</b>
+<i class="no-highlight">211</i>&nbsp;    }
+<i class="no-highlight">212</i>&nbsp;
+<i class="no-highlight">213</i>&nbsp;    @Test
+<i class="no-highlight">214</i>&nbsp;    void testDuration3() {
+<i class="no-highlight">215</i>&nbsp;        // Test case 26
+<b class="fc"><i class="no-highlight">216</i>&nbsp;        Period period40 = new Period(24, 24);</b>
+<b class="nc"><i class="no-highlight">217</i>&nbsp;        assertEquals(0, period40.duration());</b>
+<i class="no-highlight">218</i>&nbsp;    }
+<i class="no-highlight">219</i>&nbsp;
+<i class="no-highlight">220</i>&nbsp;    @Test
+<i class="no-highlight">221</i>&nbsp;    void testDuration4() {
+<i class="no-highlight">222</i>&nbsp;        // Test case 27
+<b class="fc"><i class="no-highlight">223</i>&nbsp;        Period period41 = new Period(24, 25);</b>
+<b class="nc"><i class="no-highlight">224</i>&nbsp;        assertEquals(0, period41.duration());</b>
+<i class="no-highlight">225</i>&nbsp;    }
+<i class="no-highlight">226</i>&nbsp;
+<i class="no-highlight">227</i>&nbsp;    @Test
+<i class="no-highlight">228</i>&nbsp;    void testDuration5() {
+<i class="no-highlight">229</i>&nbsp;        // Test case 28
+<b class="fc"><i class="no-highlight">230</i>&nbsp;        Period period42 = new Period(23, 24);</b>
+<b class="fc"><i class="no-highlight">231</i>&nbsp;        assertEquals(1, period42.duration());</b>
+<i class="no-highlight">232</i>&nbsp;    }
+<i class="no-highlight">233</i>&nbsp;
+<i class="no-highlight">234</i>&nbsp;    @Test
+<i class="no-highlight">235</i>&nbsp;    void testDuration6() {
+<i class="no-highlight">236</i>&nbsp;        // Test case 29
+<b class="fc"><i class="no-highlight">237</i>&nbsp;        Period period43 = new Period(24, 0);</b>
+<b class="nc"><i class="no-highlight">238</i>&nbsp;        assertEquals(0, period43.duration());</b>
+<i class="no-highlight">239</i>&nbsp;    }
+<i class="no-highlight">240</i>&nbsp;
+<i class="no-highlight">241</i>&nbsp;    @Test
+<i class="no-highlight">242</i>&nbsp;    void testDuration7() {
+<i class="no-highlight">243</i>&nbsp;        // Test case 30
+<b class="fc"><i class="no-highlight">244</i>&nbsp;        Period period44 = new Period(-1, 1);</b>
+<b class="nc"><i class="no-highlight">245</i>&nbsp;        assertEquals(0, period44.duration());</b>
+<i class="no-highlight">246</i>&nbsp;    }
+<i class="no-highlight">247</i>&nbsp;
+<i class="no-highlight">248</i>&nbsp;    @Test
+<i class="no-highlight">249</i>&nbsp;    void testDuration8() {
+<i class="no-highlight">250</i>&nbsp;        // Test case 31
+<b class="fc"><i class="no-highlight">251</i>&nbsp;        Period period45 = new Period(25, 26);</b>
+<b class="nc"><i class="no-highlight">252</i>&nbsp;        assertEquals(0, period45.duration());</b>
+<i class="no-highlight">253</i>&nbsp;    }
+<i class="no-highlight">254</i>&nbsp;
+<i class="no-highlight">255</i>&nbsp;    @Test
+<i class="no-highlight">256</i>&nbsp;    void testDuration9() {
+<i class="no-highlight">257</i>&nbsp;        // Test case 32
+<b class="fc"><i class="no-highlight">258</i>&nbsp;        Period period46 = new Period(0, 0);</b>
+<b class="nc"><i class="no-highlight">259</i>&nbsp;        assertEquals(0, period46.duration());</b>
+<i class="no-highlight">260</i>&nbsp;    }
+<i class="no-highlight">261</i>&nbsp;
+<i class="no-highlight">262</i>&nbsp;
+<i class="no-highlight">263</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-07 18:23</div>
+</div>
+</body>
+</html>
