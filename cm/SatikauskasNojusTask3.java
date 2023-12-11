@@ -13,20 +13,24 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SatikauskasNojusTask3 {
 
     @Test
-    void testCalculateVisitorRate() {
-        // Arrange
-        Rate rate = new Rate(CarParkKind.VISITOR, BigDecimal.TEN, BigDecimal.ZERO, new ArrayList<>(), new ArrayList<>());
-        Period periodWithinFreeHours = new Period(9, 15);
-        Period periodAboveFreeHours = new Period(11, 18);
+    void visitorPays(){
+        CarParkKind kind = CarParkKind.VISITOR;
+        BigDecimal normalRate = new BigDecimal(5);
+        BigDecimal reducedRate = new BigDecimal(3);
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
 
-        // Act
-        BigDecimal resultWithinFreeHours = rate.calculate(periodWithinFreeHours);
-        BigDecimal resultAboveFreeHours = rate.calculate(periodAboveFreeHours);
+        normalPeriods.add(new Period(10, 12));
+        normalPeriods.add(new Period(7, 10));
+        reducedPeriods.add(new Period(15, 17));
+        reducedPeriods.add(new Period(13, 15));
 
-        // Assert
-        assertEquals(BigDecimal.ZERO, resultWithinFreeHours);
-        assertEquals(BigDecimal.valueOf(2.50), resultAboveFreeHours);
+        Rate rate = new Rate(kind, normalRate, reducedRate, normalPeriods, reducedPeriods);
+        Period periodStay = new Period(9, 13);
+        assertEquals(2.50, rate.calculate(periodStay).doubleValue());
     }
+
+
 
     // Task 1 & 2 code
         @Test
