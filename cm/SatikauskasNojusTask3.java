@@ -63,6 +63,22 @@ public class SatikauskasNojusTask3 {
         assertEquals(4.69, r.calculate(periodStay).doubleValue());
     }
 
+    @Test
+    void staffPaysMaximum() {
+        // Arrange
+        Rate rate = new Rate(CarParkKind.STAFF, BigDecimal.valueOf(10), BigDecimal.ONE, new ArrayList<>(), new ArrayList<>());
+        Period periodWithinMaxPayable = new Period(8, 12);
+        Period periodAboveMaxPayable = new Period(14, 18);
+
+        // Act
+        BigDecimal resultWithinMaxPayable = rate.calculate(periodWithinMaxPayable);
+        BigDecimal resultAboveMaxPayable = rate.calculate(periodAboveMaxPayable);
+
+        // Assert
+        assertEquals(BigDecimal.valueOf(40), resultWithinMaxPayable);
+        assertEquals(BigDecimal.TEN, resultAboveMaxPayable);
+    }
+
     // Task 1 & 2 code
         @Test
         public void testConstructorValidInputs() {
