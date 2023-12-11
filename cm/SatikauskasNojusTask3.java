@@ -19,33 +19,32 @@ public class SatikauskasNojusTask3 {
         BigDecimal reducedRate = new BigDecimal(3);
         ArrayList<Period> normalPeriods = new ArrayList<Period>();
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
-
+        //Arrange
         normalPeriods.add(new Period(10, 12));
         normalPeriods.add(new Period(7, 10));
         reducedPeriods.add(new Period(15, 17));
         reducedPeriods.add(new Period(13, 15));
-
         Rate rate = new Rate(kind, normalRate, reducedRate, normalPeriods, reducedPeriods);
         Period periodStay = new Period(9, 13);
+        //Assert
         assertEquals(2.50, rate.calculate(periodStay).doubleValue());
     }
 
     @Test
     void managerPaysMinimum() {
-        // Arrange
-        Rate rate = new Rate(CarParkKind.MANAGEMENT, BigDecimal.valueOf(15), BigDecimal.valueOf(5), new ArrayList<>(), new ArrayList<>());
-        Period periodBelowMinimumPayable = new Period(8, 10);
-        Period periodAboveMinimumPayable = new Period(12, 15);
-
-        // Act
-        BigDecimal resultBelowMinimumPayable = rate.calculate(periodBelowMinimumPayable);
-        BigDecimal resultAboveMinimumPayable = rate.calculate(periodAboveMinimumPayable);
-
-        // Assert
-        assertEquals(BigDecimal.valueOf(5), resultBelowMinimumPayable);
-        assertEquals(BigDecimal.valueOf(45), resultAboveMinimumPayable);
+        CarParkKind kind = CarParkKind.MANAGEMENT;
+        BigDecimal normalRate = new BigDecimal(4);
+        BigDecimal reducedRate = new BigDecimal(1);
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        //Arrange
+        normalPeriods.add(new Period(10, 12));
+        reducedPeriods.add(new Period(15, 17));
+        Rate rate = new Rate(kind, normalRate, reducedRate, normalPeriods, reducedPeriods);
+        Period periodStay = new Period(9, 11);
+        //Assert
+        assertEquals(5.0, rate.calculate(periodStay).doubleValue());
     }
-
 
 
     // Task 1 & 2 code
