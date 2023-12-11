@@ -100,6 +100,24 @@ public class SatikauskasNojusTask3 {
         assertEquals(StudentCost.class, rate.calculate(new Period(10, 15)).getClass());
     }
 
+    @Test
+    public void testIsValidPeriodsSameKind() {
+        ArrayList<Period> periods = new ArrayList<>(Arrays.asList(new Period(8, 12), new Period(14, 18)));
+        assertTrue(new Rate(CarParkKind.STUDENT, BigDecimal.TEN, BigDecimal.ZERO, periods, new ArrayList<>()).isValidPeriods(periods, periods));
+    }
+
+    @Test
+    public void testConstructorNegativeReducedRate() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Rate rate = new Rate(
+                    CarParkKind.STAFF, BigDecimal.valueOf(5.0), BigDecimal.valueOf(-2.0),
+                    new ArrayList<>(),
+                    new ArrayList<>() {{
+                        add(new Period(10, 14));
+                    }}
+            );
+        });
+    }
 
     // Task 1 & 2 code
         @Test
