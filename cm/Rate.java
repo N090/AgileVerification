@@ -12,7 +12,6 @@ public class Rate {
     public ArrayList<Period> normal = new ArrayList<>();
 
 
-
     public Rate(CarParkKind kind, BigDecimal normalRate, BigDecimal reducedRate, ArrayList<Period> normalPeriods, ArrayList<Period> reducedPeriods) {
         if (reducedPeriods == null || normalPeriods == null) {
             throw new IllegalArgumentException("periods cannot be null");
@@ -60,7 +59,7 @@ public class Rate {
      * @param list the collection of periods to check
      * @return true if the periods do not overlap
      */
-    private Boolean isValidPeriods(ArrayList<Period> list) {
+    protected Boolean isValidPeriods(ArrayList<Period> list) {
         Boolean isValid = true;
         if (list.size() >= 2) {
             Period secondPeriod;

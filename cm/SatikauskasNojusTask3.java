@@ -135,6 +135,16 @@ public class SatikauskasNojusTask3 {
         assertEquals(32.0, rate.calculate(periodStay).doubleValue());
     }
 
+    @Test
+    public void testIsValidPeriodsMultipleOverlappingPeriods() {
+        // Test case: Multiple overlapping periods should be invalid
+        Rate rate = new Rate(CarParkKind.STAFF, BigDecimal.TEN, BigDecimal.ONE, new ArrayList<>(), new ArrayList<>());
+        Period period1 = new Period(8, 12);
+        Period period2 = new Period(10, 14);
+        Period period3 = new Period(13, 17);
+        assertFalse(rate.isValidPeriods(new ArrayList<>(Arrays.asList(period1, period2, period3))));
+    }
+
 
 
     // Task 1 & 2 code
