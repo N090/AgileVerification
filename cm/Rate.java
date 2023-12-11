@@ -101,19 +101,12 @@ public class Rate {
                 reducedRate.multiply(BigDecimal.valueOf(reducedRatePeriod))
         );
         // Enhanced switch statement
-        // Enhanced switch statement
         CostStrategy payment = switch (this.kind) {
             case VISITOR -> new VisitorCost();
             case MANAGEMENT -> new ManagementCost();
             case STUDENT -> new StudentCost();
-            case STAFF -> new CostStrategy() {
-                @Override
-                public BigDecimal CostBehaviour(BigDecimal amount) {
-                    return null;
-                };
-            };
+            case STAFF -> new StaffCost();
         };
-
         return payment.CostBehaviour(rateCost);
 
     }
