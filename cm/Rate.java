@@ -105,12 +105,7 @@ public class Rate {
         CostStrategy payment = switch (this.kind) {
             case VISITOR -> new VisitorCost();
             case MANAGEMENT -> new ManagementCost();
-            case STUDENT -> new CostStrategy() {
-                @Override
-                public BigDecimal CostBehaviour(BigDecimal amount) {
-                    return null;
-                };
-            };
+            case STUDENT -> new StudentCost();
             case STAFF -> new CostStrategy() {
                 @Override
                 public BigDecimal CostBehaviour(BigDecimal amount) {
