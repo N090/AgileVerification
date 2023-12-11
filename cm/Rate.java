@@ -11,6 +11,8 @@ public class Rate {
     public ArrayList<Period> reduced = new ArrayList<>();
     public ArrayList<Period> normal = new ArrayList<>();
 
+
+
     public Rate(CarParkKind kind, BigDecimal normalRate, BigDecimal reducedRate, ArrayList<Period> normalPeriods, ArrayList<Period> reducedPeriods) {
         if (reducedPeriods == null || normalPeriods == null) {
             throw new IllegalArgumentException("periods cannot be null");
@@ -89,12 +91,41 @@ public class Rate {
     }
     public BigDecimal calculate(Period periodStay) {
         if (periodStay == null) {
-            throw new IllegalArgumentException("The Period object is equal to null");
+            throw new IllegalArgumentException("The Period object is null!!");
         }
-        int normalRateHours = periodStay.occurences(normal);
-        int reducedRateHours = periodStay.occurences(reduced);
-        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
-                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
+        final int normalRatePeriod = periodStay.occurences(normal);
+        final int reducedRatePeriod = periodStay.occurences(reduced);
+        final BigDecimal normalRate = this.hourlyNormalRate;
+        final BigDecimal reducedRate = this.hourlyReducedRate;
+        final BigDecimal rateCost = normalRate.multiply(BigDecimal.valueOf(normalRatePeriod)).add(
+                reducedRate.multiply(BigDecimal.valueOf(reducedRatePeriod))
+        );
+        // Enhanced switch statement
+        // Enhanced switch statement
+        CostStrategy payment = switch (this.kind) {
+            case VISITOR -> new VisitorCost();
+            case MANAGEMENT -> new CostStrategy() {
+                @Override
+                public BigDecimal CostBehaviour(BigDecimal amount) {
+                    return null;
+                };
+            };
+            case STUDENT -> new CostStrategy() {
+                @Override
+                public BigDecimal CostBehaviour(BigDecimal amount) {
+                    return null;
+                };
+            };
+            case STAFF -> new CostStrategy() {
+                @Override
+                public BigDecimal CostBehaviour(BigDecimal amount) {
+                    return null;
+                };
+            };
+        };
+
+        return payment.CostBehaviour(rateCost);
+
     }
 
 }
