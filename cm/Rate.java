@@ -104,12 +104,7 @@ public class Rate {
         // Enhanced switch statement
         CostStrategy payment = switch (this.kind) {
             case VISITOR -> new VisitorCost();
-            case MANAGEMENT -> new CostStrategy() {
-                @Override
-                public BigDecimal CostBehaviour(BigDecimal amount) {
-                    return null;
-                };
-            };
+            case MANAGEMENT -> new ManagementCost();
             case STUDENT -> new CostStrategy() {
                 @Override
                 public BigDecimal CostBehaviour(BigDecimal amount) {
