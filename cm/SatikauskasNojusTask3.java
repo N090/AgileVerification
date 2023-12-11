@@ -33,7 +33,7 @@ public class SatikauskasNojusTask3 {
     @Test
     void managerPaysMinimum() {
         CarParkKind kind = CarParkKind.MANAGEMENT;
-        BigDecimal normalRate = new BigDecimal(4);
+        BigDecimal normalRate = new BigDecimal(2);
         BigDecimal reducedRate = new BigDecimal(1);
         ArrayList<Period> normalPeriods = new ArrayList<Period>();
         ArrayList<Period> reducedPeriods = new ArrayList<Period>();
@@ -65,19 +65,21 @@ public class SatikauskasNojusTask3 {
 
     @Test
     void staffPaysMaximum() {
-        // Arrange
-        Rate rate = new Rate(CarParkKind.STAFF, BigDecimal.valueOf(10), BigDecimal.ONE, new ArrayList<>(), new ArrayList<>());
-        Period periodWithinMaxPayable = new Period(8, 12);
-        Period periodAboveMaxPayable = new Period(14, 18);
-
-        // Act
-        BigDecimal resultWithinMaxPayable = rate.calculate(periodWithinMaxPayable);
-        BigDecimal resultAboveMaxPayable = rate.calculate(periodAboveMaxPayable);
-
-        // Assert
-        assertEquals(BigDecimal.valueOf(40), resultWithinMaxPayable);
-        assertEquals(BigDecimal.TEN, resultAboveMaxPayable);
+        CarParkKind kind = CarParkKind.STAFF;
+        BigDecimal normalRate = new BigDecimal(5);
+        BigDecimal reducedRate = new BigDecimal(3);
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        //Arrange
+        normalPeriods.add(new Period(10, 14));
+        reducedPeriods.add(new Period(14, 18));
+        Rate r = new Rate(kind, normalRate, reducedRate, normalPeriods, reducedPeriods);
+        Period periodStay = new Period(12, 17);
+        //Assert
+        assertEquals(10, r.calculate(periodStay).doubleValue());
     }
+
+
 
     // Task 1 & 2 code
         @Test
