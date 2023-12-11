@@ -88,6 +88,12 @@ public class SatikauskasNojusTask3 {
         Rate rate = new Rate(CarParkKind.VISITOR, new BigDecimal("10.0"), new BigDecimal("5.0"), normalPeriods, reducedPeriods);
     }
 
+    @Test
+    public void testCalculateWithNullPeriodStay() {
+        Rate rate = new Rate(CarParkKind.VISITOR, new BigDecimal("10.0"), new BigDecimal("5.0"), new ArrayList<>(), new ArrayList<>());
+        rate.calculate(null);
+    }
+
 
     // Task 1 & 2 code
         @Test
