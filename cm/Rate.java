@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rate {
-    private CarParkKind kind;
-    private BigDecimal hourlyNormalRate;
-    private BigDecimal hourlyReducedRate;
-    private ArrayList<Period> reduced = new ArrayList<>();
-    private ArrayList<Period> normal = new ArrayList<>();
+    public CarParkKind kind;
+    public BigDecimal hourlyNormalRate;
+    public BigDecimal hourlyReducedRate;
+    public ArrayList<Period> reduced = new ArrayList<>();
+    public ArrayList<Period> normal = new ArrayList<>();
 
     public Rate(CarParkKind kind, BigDecimal normalRate, BigDecimal reducedRate, ArrayList<Period> normalPeriods, ArrayList<Period> reducedPeriods) {
         if (reducedPeriods == null || normalPeriods == null) {
@@ -43,7 +43,7 @@ public class Rate {
      * @param periods2
      * @return true if the two collections of periods are valid together
      */
-    private boolean isValidPeriods(ArrayList<Period> periods1, ArrayList<Period> periods2) {
+    protected boolean isValidPeriods(ArrayList<Period> periods1, ArrayList<Period> periods2) {
         Boolean isValid = true;
         int i = 0;
         while (i < periods1.size() && isValid) {
@@ -88,6 +88,9 @@ public class Rate {
         return isValid;
     }
     public BigDecimal calculate(Period periodStay) {
+        if (periodStay == null) {
+            throw new IllegalArgumentException("The Period object is equal to null");
+        }
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
         if (this.kind==CarParkKind.VISITOR) return BigDecimal.valueOf(0);
