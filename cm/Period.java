@@ -3,14 +3,14 @@ package cm;
 import java.util.List;
 
 public class Period {
-     private int startHour;
-     private int endHour;
+    private int startHour;
+    private int endHour;
 
     public Period(int start, int end) {
         if (start >= end) {
             throw new IllegalArgumentException("start of period cannot be later or equal to end of period");
         }
-        if (start < 0 || start > 24 || end < 0 || end > 24) {
+        if (start < 0 || start > 24 || end > 24) {
             throw new IllegalArgumentException("start of period and end of period must be between 0 and 24");
         }
         this.startHour = start;
@@ -22,7 +22,7 @@ public class Period {
      * @param hour the start of the hour to check
      * @return true if the hour is within the period
      */
-    private Boolean isIn(int hour) {
+    public Boolean isIn(int hour) {
         return hour >= this.startHour && hour < this.endHour;
     }
 
