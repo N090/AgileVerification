@@ -46,6 +46,21 @@ public class SatikauskasNojusTask3 {
         assertEquals(5.0, rate.calculate(periodStay).doubleValue());
     }
 
+    @Test
+    void studentDiscount() {
+        // Arrange
+        Rate rate = new Rate(CarParkKind.STUDENT, BigDecimal.valueOf(8), BigDecimal.valueOf(5), new ArrayList<>(), new ArrayList<>());
+        Period periodWithinNormalHours = new Period(9, 12);
+        Period periodAboveNormalHours = new Period(14, 18);
+
+        // Act
+        BigDecimal resultWithinNormalHours = rate.calculate(periodWithinNormalHours);
+        BigDecimal resultAboveNormalHours = rate.calculate(periodAboveNormalHours);
+
+        // Assert
+        assertEquals(BigDecimal.valueOf(24), resultWithinNormalHours);
+        assertEquals(BigDecimal.valueOf(15), resultAboveNormalHours);
+    }
 
     // Task 1 & 2 code
         @Test
