@@ -30,6 +30,22 @@ public class SatikauskasNojusTask3 {
         assertEquals(2.50, rate.calculate(periodStay).doubleValue());
     }
 
+    @Test
+    void managerPaysMinimum() {
+        // Arrange
+        Rate rate = new Rate(CarParkKind.MANAGEMENT, BigDecimal.valueOf(15), BigDecimal.valueOf(5), new ArrayList<>(), new ArrayList<>());
+        Period periodBelowMinimumPayable = new Period(8, 10);
+        Period periodAboveMinimumPayable = new Period(12, 15);
+
+        // Act
+        BigDecimal resultBelowMinimumPayable = rate.calculate(periodBelowMinimumPayable);
+        BigDecimal resultAboveMinimumPayable = rate.calculate(periodAboveMinimumPayable);
+
+        // Assert
+        assertEquals(BigDecimal.valueOf(5), resultBelowMinimumPayable);
+        assertEquals(BigDecimal.valueOf(45), resultAboveMinimumPayable);
+    }
+
 
 
     // Task 1 & 2 code
