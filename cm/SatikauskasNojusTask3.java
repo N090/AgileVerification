@@ -119,6 +119,22 @@ public class SatikauskasNojusTask3 {
         });
     }
 
+    @Test
+    public void testCalculateManagementMaximum() {
+        CarParkKind kind = CarParkKind.MANAGEMENT;
+        BigDecimal normalRate = new BigDecimal(8);
+        BigDecimal reducedRate = new BigDecimal(4);
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        // Arrange
+        normalPeriods.add(new Period(10, 12));
+        reducedPeriods.add(new Period(15, 17));
+        Rate rate = new Rate(kind, normalRate, reducedRate, normalPeriods, reducedPeriods);
+        Period periodStay = new Period(14, 18);
+        // Assert
+        assertEquals(32.0, rate.calculate(periodStay).doubleValue());
+    }
+
     // Task 1 & 2 code
         @Test
         public void testConstructorValidInputs() {
