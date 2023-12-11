@@ -94,6 +94,12 @@ public class SatikauskasNojusTask3 {
         rate.calculate(null);
     }
 
+    @Test
+    public void testCostStrategySwitchDifferentKind() {
+        Rate rate = new Rate(CarParkKind.STUDENT, new BigDecimal("10.0"), new BigDecimal("5.0"), new ArrayList<>(), new ArrayList<>());
+        assertEquals(StudentCost.class, rate.calculate(new Period(10, 15)).getClass());
+    }
+
 
     // Task 1 & 2 code
         @Test
