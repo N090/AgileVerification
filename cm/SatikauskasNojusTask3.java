@@ -48,18 +48,19 @@ public class SatikauskasNojusTask3 {
 
     @Test
     void studentDiscount() {
-        // Arrange
-        Rate rate = new Rate(CarParkKind.STUDENT, BigDecimal.valueOf(8), BigDecimal.valueOf(5), new ArrayList<>(), new ArrayList<>());
-        Period periodWithinNormalHours = new Period(9, 12);
-        Period periodAboveNormalHours = new Period(14, 18);
-
-        // Act
-        BigDecimal resultWithinNormalHours = rate.calculate(periodWithinNormalHours);
-        BigDecimal resultAboveNormalHours = rate.calculate(periodAboveNormalHours);
-
-        // Assert
-        assertEquals(BigDecimal.valueOf(24), resultWithinNormalHours);
-        assertEquals(BigDecimal.valueOf(15), resultAboveNormalHours);
+        CarParkKind kind = CarParkKind.STUDENT;
+        BigDecimal normalRate = new BigDecimal(6);
+        BigDecimal reducedRate = new BigDecimal(1);
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        //Arrange
+        normalPeriods.add(new Period(9, 12));
+        normalPeriods.add(new Period(16, 18));
+        reducedPeriods.add(new Period(12, 16));
+        Rate r = new Rate(kind, normalRate, reducedRate, normalPeriods, reducedPeriods);
+        Period periodStay = new Period(11, 13);
+        //Assert
+        assertEquals(4.69, r.calculate(periodStay).doubleValue());
     }
 
     // Task 1 & 2 code
