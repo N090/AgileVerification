@@ -78,7 +78,15 @@ public class SatikauskasNojusTask3 {
         //Assert
         assertEquals(10, r.calculate(periodStay).doubleValue());
     }
-
+    //Tests to reach 100% coverage
+    @Test
+    public void testOverlappingPeriods() {
+        ArrayList<Period> normalPeriods = new ArrayList<>();
+        normalPeriods.add(new Period(10, 15));
+        ArrayList<Period> reducedPeriods = new ArrayList<>();
+        reducedPeriods.add(new Period(12, 18));  // Overlaps with the normal period
+        Rate rate = new Rate(CarParkKind.VISITOR, new BigDecimal("10.0"), new BigDecimal("5.0"), normalPeriods, reducedPeriods);
+    }
 
 
     // Task 1 & 2 code
