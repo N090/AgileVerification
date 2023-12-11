@@ -135,6 +135,8 @@ public class SatikauskasNojusTask3 {
         assertEquals(32.0, rate.calculate(periodStay).doubleValue());
     }
 
+
+
     // Task 1 & 2 code
         @Test
         public void testConstructorValidInputs() {
